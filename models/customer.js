@@ -71,12 +71,6 @@ class Customer {
         [this.firstName, this.lastName, this.phone, this.notes]
       );
       this.id = result.rows[0].id;
-    } else {
-      await db.query(
-        `UPDATE customers SET first_name=$1, last_name=$2, phone=$3, notes=$4
-             WHERE id=$5`,
-        [this.firstName, this.lastName, this.phone, this.notes, this.id]
-      );
     }
   }
 }
