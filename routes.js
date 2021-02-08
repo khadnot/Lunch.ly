@@ -11,12 +11,26 @@ const router = new express.Router();
 
 router.get("/", async function(req, res, next) {
   try {
+    const name = req.body
     const customers = await Customer.all();
+    console.log(name)
     return res.render("customer_list.html", { customers });
   } catch (err) {
     return next(err);
   }
 });
+
+/* for search
+router.post("/", async (req, res, next) => {
+  try {
+    const search = req.body;
+    const customer = await Customer.getCustomerBySearch(search);
+    console.log(search);
+    return res.send("customer_list.html", { customer }, search);
+  } catch (err) { 
+    return next(err)
+  }
+}); //post request with search string in body */
 
 /** Form to add a new customer. */
 

@@ -30,6 +30,16 @@ class Customer {
     return results.rows.map(c => new Customer(c));
   }
 
+  static async getCustomerBySearch() { // edit this
+    const results = await db.query(
+      `SELECT
+        first_name,
+        last_name
+       FROM customers` // firstName like % or lastName like %
+    );
+    return results.rows.map(c => new Customer(c));
+  }
+
   /** get a customer by ID. */
 
   static async get(id) {
